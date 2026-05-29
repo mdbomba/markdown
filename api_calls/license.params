@@ -1,0 +1,12 @@
+Api_User='bal'
+Api_Pass='1fourall'
+New_Api_Pass='Kemp1fourall'
+Api_Ip='10.0.0.69'
+Api_Port='443'
+Progress_User=''      # Only used to generate licenses
+Progress_Pass=''                     # Only used to generate licenses
+Order_Id=''
+License_Type='free'
+ntphost='pool.ntp.org'
+hostname='vlm69'
+nameserver='8.8.8.8,8.8.4.4'
