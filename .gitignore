@@ -1,0 +1,13 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Credentials / environment files
+.env
+*.env
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db

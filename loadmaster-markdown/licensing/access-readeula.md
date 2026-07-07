@@ -1,0 +1,82 @@
+# access/readeula
+
+## `primitiveName`
+
+**Type:** `string`  
+**Required:** No  
+**Default:** `N/A`  
+
+### Description
+Reads EULA state and returns the first `Magic` token when acceptance is required.
+
+---
+
+### Allowed Values / Options
+
+| Value | Description |
+|-------|-------------|
+| `N/A` | No request primitive is provided in current usage. |
+
+> **Note:** If `Magic` is absent, script treats EULA as already handled or unavailable.
+
+---
+
+### Constraints
+- Requires valid API basic authentication.
+- XML response is expected by script parsing logic.
+- A non-empty `Magic` token is required for the next EULA call.
+
+---
+
+### Behavior Rules
+- If omitted: no primitive payload is needed.
+- What overrides this field: not applicable.
+- Interactions with other parameters: output `Magic` is required by `access/accepteula`.
+
+### Live Validation (2026-05-28)
+- Endpoint returned `code="ok"` on `10.0.0.69`.
+- Response included a non-empty `Magic` UUID token.
+- Response also contained large encoded EULA HTML content.
+- PS module equivalent: `Read-LicenseEULA` (`$lma0 = Read-LicenseEULA -LoadBalancer $FQDN -Credential $creds`)
+- PS module extracts magic as: `$magicString = $lma0.Data.EULA.MagicString`
+
+### Live Validation (2026-06-16)
+- Endpoint returned `code="ok"` on `10.0.0.205` (freshly deployed KVM instance, firmware 7.2.63.x)
+- Magic token is a UUID format string (e.g., `feb9164f-cb05-4112-aff7-602feb35cda7`)
+- No authentication is required for this call on an unlicensed appliance
+- EULA HTML content is HTML-entity encoded within the XML response
+- The Magic token is **single-use** — once consumed by `accepteula`, a new `readeula` call is needed for a fresh token
+- Call does not require any query parameters
+
+#
+## Example Request (APIv2)
+
+```bash
+curl -sk -X POST "https://10.0.0.69:443/accessv2" \
+  -H "Content-Type: application/json" \
+  -d '{"apiuser":"bal","apipass":"PASSWORD","cmd":"readeula"}'
+```
+
+## Notes
+- Called before any EULA acceptance regardless of license source (ONLINE, ONLINE-SPLA, LOCAL-SPLA, LOCAL-MELA).
+- No parameters required — credentials are passed via HTTP Basic Auth.
+- The large EULA HTML body in the response can be ignored; only the `Magic` token is needed.
+- **API Interface:** This is an APIv1-only operation. The appliance is not yet licensed so
+  APIv2 (`/accessv2`) may not be available. Use the standard `/access/readeula` endpoint.
+
+---
+
+### Examples
+
+#### Example 1 - Basic Usage
+```json
+{
+  "primitiveName": "N/A"
+}
+```
+
+#### Example 2 - Request Form
+```http
+GET /access/readeula
+Authorization: Basic <api_user:api_pass>
+```

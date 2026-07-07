@@ -1,0 +1,62 @@
+Fri Feb  7 11:39:38 EST 2020
+	- Added support for ACL on WUI access (only for LM running the incoming V7.2.50 firmware version)
+	- Added SingleSignOnMessage parameter to New-AdcVirtualService cmdlet
+	- Added SingleSignOnMessage parameter to Set-AdcVirtualService and Set-AdcSubVirtualService cmdlets
+
+Wed Dec 18 12:17:42 EST 2019
+ - Added Captcha parameters to the Set-AdcVirtualService/Set-AdcSubVirtualService cmdlets	
+
+Tue Nov 12 12:18:15 EST 2019
+ - Added OnlyOnNoFlag parameter to New-AdcContentRule, Set-AdcContentRule cmdlets
+
+Thu Oct 10 16:33:43 EDT 2019
+ - Added new cmdlet Get-SSODomainQuerySession.
+ - Added UserPwdExpiryWarn (boolean) and UserPwdExpiryWarnDays (integer) parameters
+   to New/Set-AdcVirtualService and Set-AdcSubVirtualService cmdlets.
+
+Wed Jul 17 10:21:55 EDT 2019
+ - Added Export-LmWafTempRemoteLog and Reset-LmWafTempRemoteLog cmdlets
+ - Fixed Reset-LmWafTempRemoteLog cmdlet
+
+Tue Apr 23 13:13:18 EDT 2019
+ - Remove-SplaInstance - fixed handling of error case
+ - Set-GeoFQDNSiteMapping cmdlet - changed MappingPort type from string to integer to allow the usage of the wildcard *
+ - GEO Powershell blacklist API - removed not used filename parameter from url
+ - GEO Powershell API - added parameter MappingName to the Set-GeoFQDNSiteMapping cmdlet
+ - GEO Powershell API - added Set-GeoFQDNSiteMapping cmdlet
+ - Added Remove-SplaInstance cmdlet
+ - Added the Timeout parameter to New-LdapEndpoint and Set-LdapEndpoint cmdlets
+ - Added GEO statistics cmdlet (Get-GeoStatistics)
+ - Removed HSM cmdlets from the PS module
+
+Mon Feb  4 12:2-:05 EST 2019
+ - Fixed issue in the Read-LicenseEULA cmdlet
+ - Exposed DiskUsage statistics within the Get-LogStatistics cmdlet.
+
+Thu Jan 10 09:10:54 EST 2019
+ - Updated cmdlets Get-LmBackupConfiguration and Set-LmBackupConfiguration to match
+   the new value for the parameter backupmethod
+ - added cmdlets Get-LmExtendedLogFile, Reset-LmExtendedLogFile and Export-LmExtendedLogFile
+   added cmdlets Get-LmSyslogFile, Reset-LmSyslogFile, Export-LmSyslogFile
+   added cmdlets Get-EspExtendedLogConfiguration, Set-EspExtendedLogConfiguration
+   for Esp Extended log files management
+ - New-AdcVirtualService, Set-AdcVirtualService, Set-AdcSubVirtualService cmdlets:
+   updated OutputAuthMode range values (from [0, 3] to [0, 4])
+ - added radius_send_nas_id and radius_nas_id parameters to the Set-SSODomain cmdlet
+ - Set-SecAdminWuiConfiguration cmdlet: updated WUITLSProtocols parameter allowed values range
+   (from [ValidateRange(0, 14)] to [ValidateRange(0, 30)])
+ - added missing parameter syslognone to the Set-LogSyslogConfiguration cmdlet
+ - added the new flag ldapephc to the Set-SSODomain cmdlet	 
+
+
+Thu Oct  4 16:03:27 EDT 2018
+PowerShell module updates
+ - Request-LicenseOnPremise, Get-AslLicenseType: the parameters aslipaddr and aslname have been replaced by aslhost. 
+ - New-AdcVirtualService: added new parameter ExcludeDirectories, fixed ange values for InputAuthMode
+ - Set-AdcVirtualService: added new parameter ExcludeDirectories, fixed ange values for InputAuthMode,
+                          added new parameter AddAuthHeader
+ - Set-AdcSubVirtualService: added new parameter ExcludeDirectories, fixed ange values for InputAuthMode
+ - New-AdcRealServer: added new parameter AddToAllSubvs
+ - Set-SAMLSPEntity: added new parameter idp_match_cert
+
+

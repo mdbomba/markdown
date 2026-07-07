@@ -1,0 +1,13 @@
+Api_User='bal'
+Api_Pass=''
+New_Api_Pass=''
+Api_Ip='10.0.0.14'
+Api_Port='443'
+Vm_Name='14_vlm14'
+Progress_User=''      # Only used to generate licenses
+Progress_Pass=''                     # Only used to generate licenses
+Order_Id=''
+License_Type='free'
+ntphost='pool.ntp.org'
+hostname='vlm14'
+nameserver='8.8.8.8,8.8.4.4'
